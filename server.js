@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const contentsRouter = require("./routes/contents");
+const menuRouter = require("./routes/menu");
+
 
 const PORT = 8000;
 
@@ -23,6 +25,7 @@ app.get("/form", (req, res) =>{
 
 //ルーティング設計
 app.use("/contents", contentsRouter);
+app.use("/menu",menuRouter);
 // app.use("/auth", authRouter);
 // app.use("/customer", customreRouter);
 // app.use("/product", productRouter);
