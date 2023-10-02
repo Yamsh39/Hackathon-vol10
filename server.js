@@ -6,15 +6,19 @@ const PORT = 8000;
 
 app.set("view engine", "ejs"); 
 
-// app.use(mylogger)
+// app.use(mylogger);
 
 app.get("/", (req, res) =>{
-    // console.log("helloExpress")
-    // res.send("<h1>こんにちは</h1>")
+    // console.log("helloExpress");
+    // res.send("<h1>こんにちは</h1>");
     // res.sendStatus(400);
-    // res.status(500).send("エラー")
+    // res.status(500).send("エラー");
     // res.status(500).json({msg: "エラーです"});
     res.render("index", {text: "NodejsとExpress"});
+});
+
+app.get("/form", (req, res) =>{
+    res.render("form/form");
 });
 
 //ルーティング設計
