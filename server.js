@@ -6,8 +6,10 @@ const menuRouter = require("./routes/menu");
 
 const PORT = 8000;
 
-app.set("view engine", "ejs"); 
+app.use(express.static('public'));
 
+app.set("view engine", "ejs"); 
+app.use(express.static(__dirname+"/public"));
 // app.use(mylogger);
 
 app.get("/", (req, res) =>{
@@ -30,11 +32,12 @@ app.use("/menu",menuRouter);
 // app.use("/customer", customreRouter);
 // app.use("/product", productRouter);
 
+
+
 //ミドルウェア
 function mylogger(req, res, next) {
     console.log(req.originalUrl);
     next();
 };
-
 
 app.listen(PORT, () => console.log("サーバーが起動しました"));

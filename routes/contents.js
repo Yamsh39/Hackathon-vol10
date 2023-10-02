@@ -5,7 +5,7 @@ const router = express.Router();
 router.use(mylogger);
 
 router.get("/", (req, res)=>{
-    res.render("detail/detail", {text: "NodejsとExpress"});
+    res.render("detail", {text: "NodejsとExpress"});
 });
 
 router.get("/:id", (req, res) => {
