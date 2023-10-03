@@ -18,7 +18,7 @@ app.get("/", (req, res) =>{
 });
 
 app.get("/form", (req, res) =>{
-    res.render("form/form");
+    res.render("form");
 });
 
 //ルーティング設計
