@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ラーメン登録フォーム</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles/form.css">
 </head>
 <body>
-    <h1>ラーメン登録</h1>
+<h1>ラーメン登録</h1>
 <form action=""method="post">
-    <div class="item">
-        <label class="label">店名</label>
-        <input type="text" class="inputs" name="name"/>
-    </div>
-    <div>
-        <p>点数：<span id="score"></span></p>
-    </div>
-    <div class="item">
-        <label class="label">写真</label>
-        <input type="file" class="inputs" name="name" accept="image/*"/>;
+    <div class="head">
+        <div class="item">
+            <label class="label">店名</label>
+            <input type="text" class="inputs" name="name"/>
+        </div>
+        <div>
+            <p>点数：<span id="score"></span></p>
+        </div>
+        <div class="item">
+            <label class="label">写真</label>
+            <input type="file" class="inputs" name="name" accept="image/*"/>;
+        </div>
     </div>
     <div class="evaluation">
         <div class="item">
@@ -85,7 +87,7 @@
     setCurrentValue(currentValueElemMen, inputElemMen.value);
     setCurrentValue(currentValueElemSoup, inputElemSoup.value);
     setCurrentValue(currentValueElemTopping, inputElemTopping.value);
-    }            
+    }
 </script>
 </body>
 </html>
