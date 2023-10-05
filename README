@@ -7,12 +7,12 @@ $ npm install ejs
 
 
 package.json内に　"dev": "nodemon server.js"　を追加する
-``````
+```
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js"
   },
-``````
+```
 
 ルーティング先のURL
 localhost:8000/contents/

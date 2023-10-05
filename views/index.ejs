@@ -7,9 +7,38 @@
     <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
-    <h1>My麺へようこそ(メインページ)</h1>
-    <%= text %>
-    <button class="button-88" role="button" id="toFormButton">Button 88</button>
+    <div class="header">
+        <div class="headerInfo">
+            <p id="titleName">My麺</p>
+            <a href="/form" id="signUpButton">
+                <button class="button-88" role="button">新規登録</button>
+            </a>
+        </div>
+    </div>
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+    </label>
+    <div id="sidebarMenu">
+        <ul class="sidebarMenuInner">
+        <li>My 麺</span></li>
+        <li><a href="https://github.com/Yamsh39/Hackathon-vol10">Website's repository</a></li>
+        </ul>
+    </div>
+    <div id='center' class="main center">
+        <div class="mainInner">
+        <div>PURE CSS SIDEBAR TOGGLE MENU</div>
+        </div>
+        <div class="mainInner">
+        <div>PURE CSS SIDEBAR TOGGLE MENU</div>
+        </div>
+        <div class="mainInner">
+        <div>PURE CSS SIDEBAR TOGGLE MENU</div>
+        </div>
+    </div>
+
     <script type="text/javascript" src="scripts/index.js"></script>
 </body>
 </html>
