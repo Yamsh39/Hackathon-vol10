@@ -1,9 +1,30 @@
 body{
     height: 100vh;
-    width: 100%;
     background-image: url(../pictures/ramen48.png);
+    background-repeat: repeat;
 }
 
 h1{
-    font-size: 500px;
+    font-size: 60px;
+    text-align: center;
+}
+
+.item{
+    display: inline-block;
+    width: 30%;
+    margin: 0,1%,100px,1%;
+}
+
+.evaluaition{
+    width: 100%;
+    font-size: 20px;
+}
+.item2{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50,20,50,20;
+}
+#men{
+    width: 70%;
 }

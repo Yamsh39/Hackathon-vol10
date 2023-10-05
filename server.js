@@ -5,7 +5,7 @@ const contentsRouter = require("./routes/contents");
 const PORT = 8000;
 
 app.set("view engine", "ejs"); 
-
+app.use(express.static(__dirname+"/public"));
 // app.use(mylogger);
 
 app.get("/", (req, res) =>{
@@ -26,6 +26,8 @@ app.use("/contents", contentsRouter);
 // app.use("/auth", authRouter);
 // app.use("/customer", customreRouter);
 // app.use("/product", productRouter);
+
+
 
 //ミドルウェア
 function mylogger(req, res, next) {
