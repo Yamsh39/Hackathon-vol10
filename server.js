@@ -4,6 +4,8 @@ const contentsRouter = require("./routes/contents");
 
 const PORT = 8000;
 
+app.use(express.static('public'));
+
 app.set("view engine", "ejs"); 
 app.use(express.static(__dirname+"/public"));
 // app.use(mylogger);
@@ -34,6 +36,5 @@ function mylogger(req, res, next) {
     console.log(req.originalUrl);
     next();
 };
-
 
 app.listen(PORT, () => console.log("サーバーが起動しました"));
