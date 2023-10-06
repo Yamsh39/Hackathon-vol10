@@ -1,97 +1,97 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ラーメン登録フォーム</title>
-    <link rel="stylesheet" type="text/css" href="/styles/form.css">
-</head>
-<body>
-<h1>ラーメン登録</h1>
-<form action=""method="post">
-    <div class="head">
-        <div class="item">
-            <label class="label">店名</label>
-            <input type="text" class="inputs" name="name"/>
-        </div>
-        <div class="item">
-            <p>点数：<span id="score"></span></p>
-        </div>
-        <div class="item">
-            <label class="label">写真</label>
-            <input type="file" class="inputs" name="name" accept="image/*"/>
-        </div>
-    </div>
-    <div class="evaluation">
-        <div class="item2">
-            <label class="label">麺</label>
-            <input type="range" id="men" min="0" max="100" step="1"/>
-            <p><span  id="current-value-men"></span></p>
-        </div>
-        <div class="item2">
-            <label class="label">スープ</label>
-            <input type="range" id="Soup" min="0" max="100" step="1" />
-            <p><span  id="current-value-soup"></span></p>
-        </div>
-        <div class="item2">
-            <label class="label">トッピング</label>
-            <input type="range" id="Topping" min="0" max="100" step="1"/>
-            <p><span  id="current-value-topping"></span></p>
-        </div>
-    </div>
-    <div class="item">
-        <label class="label">コメント</label>
-        <textarea class="inputs"></textarea>
-    </div>
-    <div class="">
-        <input type="submit" value="登録">
-        <input type="reset" value="リセット">
-    </div>
-</form>
-<script>
-    const inputElemMen = document.getElementById("men");
-    const inputElemSoup = document.getElementById("Soup");
-    const inputElemTopping = document.getElementById("Topping");
-    const currentValueElemMen = document.getElementById("current-value-men");
-    const currentValueElemSoup = document.getElementById("current-value-soup");
-    const currentValueElemTopping = document.getElementById("current-value-topping");
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ラーメン登録フォーム</title>
+		<link rel="stylesheet" type="text/css" href="/styles/form.css" />
+	</head>
+	<body>
+		<h1>ラーメン登録</h1>
+		<form action="" method="post">
+			<div class="head">
+				<div class="item">
+					<label class="label">店名</label>
+					<input type="text" class="inputs" name="name" />
+				</div>
+				<div class="item">
+					<p>点数：<span id="score"></span></p>
+				</div>
+				<div class="item">
+					<label class="label">写真</label>
+					<input type="file" class="inputs" name="name" accept="image/*" />
+				</div>
+			</div>
+			<div class="evaluation">
+				<div class="item2">
+					<label class="label">麺</label>
+					<input type="range" id="men" min="0" max="100" step="1" />
+					<p><span id="current-value-men"></span></p>
+				</div>
+				<div class="item2">
+					<label class="label">スープ</label>
+					<input type="range" id="Soup" min="0" max="100" step="1" />
+					<p><span id="current-value-soup"></span></p>
+				</div>
+				<div class="item2">
+					<label class="label">トッピング</label>
+					<input type="range" id="Topping" min="0" max="100" step="1" />
+					<p><span id="current-value-topping"></span></p>
+				</div>
+			</div>
+			<div class="item">
+				<label class="label">コメント</label>
+				<textarea class="inputs"></textarea>
+			</div>
+			<div class="">
+				<input type="submit" value="登録" />
+				<input type="reset" value="リセット" />
+			</div>
+		</form>
+		<script>
+			const inputElemMen = document.getElementById("men");
+			const inputElemSoup = document.getElementById("Soup");
+			const inputElemTopping = document.getElementById("Topping");
+			const currentValueElemMen = document.getElementById("current-value-men");
+			const currentValueElemSoup = document.getElementById("current-value-soup");
+			const currentValueElemTopping = document.getElementById("current-value-topping");
 
-    const scoreElemen = document.getElementById("score");
+			const scoreElemen = document.getElementById("score");
 
-    const updateTotalScore = () => {
-    const menScore = parseInt(inputElemMen.value);
-    const soupScore = parseInt(inputElemSoup.value);
-    const toppingScore = parseInt(inputElemTopping.value);
-    const totalScore = menScore + soupScore + toppingScore;
-    scoreElemen.innerText = totalScore;
-    }
-    
-    const setCurrentValue = (elem,val) => {
-        elem.innerText= val;
-    }
+			const updateTotalScore = () => {
+				const menScore = parseInt(inputElemMen.value);
+				const soupScore = parseInt(inputElemSoup.value);
+				const toppingScore = parseInt(inputElemTopping.value);
+				const totalScore = menScore + soupScore + toppingScore;
+				scoreElemen.innerText = totalScore;
+			};
 
-    const rangeOnChange = (e, elem) =>{
-        setCurrentValue(elem,e.target.value);
-    }
+			const setCurrentValue = (elem, val) => {
+				elem.innerText = val;
+			};
 
-    window.onload = () => {
-    inputElemMen.addEventListener("input", (e) => {
-        rangeOnChange(e, currentValueElemMen);
-        updateTotalScore();
-    });
-    inputElemSoup.addEventListener("input", (e) => {
-        rangeOnChange(e, currentValueElemSoup);
-        updateTotalScore();
-    });
-    inputElemTopping.addEventListener("input", (e) => {
-        rangeOnChange(e, currentValueElemTopping);
-        updateTotalScore();
-    });
+			const rangeOnChange = (e, elem) => {
+				setCurrentValue(elem, e.target.value);
+			};
 
-    setCurrentValue(currentValueElemMen, inputElemMen.value);
-    setCurrentValue(currentValueElemSoup, inputElemSoup.value);
-    setCurrentValue(currentValueElemTopping, inputElemTopping.value);
-    }
-</script>
-</body>
+			window.onload = () => {
+				inputElemMen.addEventListener("input", (e) => {
+					rangeOnChange(e, currentValueElemMen);
+					updateTotalScore();
+				});
+				inputElemSoup.addEventListener("input", (e) => {
+					rangeOnChange(e, currentValueElemSoup);
+					updateTotalScore();
+				});
+				inputElemTopping.addEventListener("input", (e) => {
+					rangeOnChange(e, currentValueElemTopping);
+					updateTotalScore();
+				});
+
+				setCurrentValue(currentValueElemMen, inputElemMen.value);
+				setCurrentValue(currentValueElemSoup, inputElemSoup.value);
+				setCurrentValue(currentValueElemTopping, inputElemTopping.value);
+			};
+		</script>
+	</body>
 </html>
