@@ -4,26 +4,26 @@ const router = express.Router();
 
 router.use(mylogger);
 
-router.get("/", (req, res)=>{
-    res.render("detail", {text: "NodejsとExpress"});
+router.get("/", (req, res) => {
+	res.render("detail", { text: "NodejsとExpress" });
 });
 
 router.get("/:id", (req, res) => {
-    res.send(`${req.params.id}のユーザー情報を取得しました`);
+	res.send(`${req.params.id}のユーザー情報を取得しました`);
 });
 
 router.post("/:id", (req, res) => {
-    res.send(`${req.params.id}のユーザー情報を取得しました`);
+	res.send(`${req.params.id}のユーザー情報を取得しました`);
 });
 
 router.delete("/:id", (req, res) => {
-    res.send(`${req.params.id}のユーザー情報を取得しました`);
+	res.send(`${req.params.id}のユーザー情報を取得しました`);
 });
 
 //ミドルウェア
 function mylogger(req, res, next) {
-    console.log(req.originalUrl);
-    next();
-};
+	console.log(req.originalUrl);
+	next();
+}
 
 module.exports = router;

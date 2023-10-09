@@ -1,12 +1,13 @@
 環境構築
+
 ```
 $ npm init -y
 $ npm i express nodemon
 $ npm install ejs
 ```
 
+package.json 内に　"dev": "nodemon server.js"　を追加する
 
-package.json内に　"dev": "nodemon server.js"　を追加する
 ```
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,5 +15,8 @@ package.json内に　"dev": "nodemon server.js"　を追加する
   },
 ```
 
-ルーティング先のURL
-localhost:8000/contents/
+走らせるやつ
+$ sudo /opt/lampp/lampp start
+
+xammp 起動
+$ sudo /opt/lampp/manager-linux-x64.run
