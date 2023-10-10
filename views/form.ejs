@@ -8,40 +8,47 @@
 	</head>
 	<body>
 		<h1>ラーメン登録</h1>
-		<form action="" method="post">
+		<form action="" method="post" enctype="multipart/form-data">
 			<div class="head">
 				<div class="item">
 					<label class="label">店名</label>
-					<input type="text" class="inputs" name="name" />
+					<input type="text" class="inputs" name="shopName" />
 				</div>
 				<div class="item">
 					<p>点数：<span id="score"></span></p>
 				</div>
 				<div class="item">
 					<label class="label">写真</label>
-					<input type="file" class="inputs" name="name" accept="image/*" />
+					<input type="file" class="inputs" name="imageFile" accept="image/*" />
 				</div>
 			</div>
 			<div class="evaluation">
 				<div class="item2">
 					<label class="label">麺</label>
-					<input type="range" id="men" min="0" max="100" step="1" />
+					<input type="range" id="men" min="0" max="100" step="1" name="menScore" />
 					<p><span id="current-value-men"></span></p>
 				</div>
 				<div class="item2">
 					<label class="label">スープ</label>
-					<input type="range" id="Soup" min="0" max="100" step="1" />
+					<input type="range" id="Soup" min="0" max="100" step="1" name="soupScore" />
 					<p><span id="current-value-soup"></span></p>
 				</div>
 				<div class="item2">
 					<label class="label">トッピング</label>
-					<input type="range" id="Topping" min="0" max="100" step="1" />
+					<input
+						type="range"
+						id="Topping"
+						min="0"
+						max="100"
+						step="1"
+						name="toppingScore"
+					/>
 					<p><span id="current-value-topping"></span></p>
 				</div>
 			</div>
 			<div class="item">
 				<label class="label">コメント</label>
-				<textarea class="inputs"></textarea>
+				<textarea class="inputs" name="comment"></textarea>
 			</div>
 			<div class="">
 				<input type="submit" value="登録" />
