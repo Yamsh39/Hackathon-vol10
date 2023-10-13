@@ -6,55 +6,62 @@
 		<title>ラーメン登録フォーム</title>
 		<link rel="stylesheet" type="text/css" href="/styles/form.css" />
 	</head>
+	
 	<body>
-		<h1>ラーメン登録</h1>
-		<form action="" method="post" enctype="multipart/form-data">
-			<div class="head">
-				<div class="item">
-					<label class="label">店名</label>
-					<input type="text" class="inputs" name="shopName" />
+		<div class="form">
+			<a href="/" height="200px">
+				<button height="200px" width="auto">戻る</button>
+			</a>
+			<h1>ラーメン登録</h1>
+			<form action="" method="post" enctype="multipart/form-data">
+				<div class="head">
+					<div class="item">
+						<label class="label">店名</label>
+						<input type="text" class="inputs" name="shopName" />
+					</div>
+					<div class="item">
+						<p>点数：<span id="score">150</span></p>
+					</div>
+					<div class="item">
+						<label class="label">写真</label>
+						<input type="file" class="inputs" name="imageFile" accept="image/*" onchange="previewPhoto(event)"/>
+						<img src="/pictures/sampleRamen.jpg" alt="選択中の写真" id="imagePreview"  height="200px" width="auto">
+					</div>
+				</div>
+				<div class="evaluation">
+					<div class="item2">
+						<label class="label">麺</label>
+						<input type="range" id="men" min="0" max="100" step="1" name="menScore" />
+						<p><span id="current-value-men"></span></p>
+					</div>
+					<div class="item2">
+						<label class="label">スープ</label>
+						<input type="range" id="Soup" min="0" max="100" step="1" name="soupScore" />
+						<p><span id="current-value-soup"></span></p>
+					</div>
+					<div class="item2">
+						<label class="label">トッピング</label>
+						<input
+							type="range"
+							id="Topping"
+							min="0"
+							max="100"
+							step="1"
+							name="toppingScore"
+						/>
+						<p><span id="current-value-topping"></span></p>
+					</div>
 				</div>
 				<div class="item">
-					<p>点数：<span id="score"></span></p>
+					<label class="label">コメント</label>
+					<textarea class="inputs" name="comment"></textarea>
 				</div>
-				<div class="item">
-					<label class="label">写真</label>
-					<input type="file" class="inputs" name="imageFile" accept="image/*" />
+				<div class="">
+					<input type="submit" value="登録" />
+					<input id="reset" type="reset" value="リセット" />
 				</div>
-			</div>
-			<div class="evaluation">
-				<div class="item2">
-					<label class="label">麺</label>
-					<input type="range" id="men" min="0" max="100" step="1" name="menScore" />
-					<p><span id="current-value-men"></span></p>
-				</div>
-				<div class="item2">
-					<label class="label">スープ</label>
-					<input type="range" id="Soup" min="0" max="100" step="1" name="soupScore" />
-					<p><span id="current-value-soup"></span></p>
-				</div>
-				<div class="item2">
-					<label class="label">トッピング</label>
-					<input
-						type="range"
-						id="Topping"
-						min="0"
-						max="100"
-						step="1"
-						name="toppingScore"
-					/>
-					<p><span id="current-value-topping"></span></p>
-				</div>
-			</div>
-			<div class="item">
-				<label class="label">コメント</label>
-				<textarea class="inputs" name="comment"></textarea>
-			</div>
-			<div class="">
-				<input type="submit" value="登録" />
-				<input type="reset" value="リセット" />
-			</div>
-		</form>
+			</form>
+		</div>
 		<script>
 			const inputElemMen = document.getElementById("men");
 			const inputElemSoup = document.getElementById("Soup");
@@ -62,8 +69,25 @@
 			const currentValueElemMen = document.getElementById("current-value-men");
 			const currentValueElemSoup = document.getElementById("current-value-soup");
 			const currentValueElemTopping = document.getElementById("current-value-topping");
+			
+			const inputElemreset = document.getElementById("reset");
 
 			const scoreElemen = document.getElementById("score");
+
+
+			function previewPhoto(event){
+				const file = event.target.files[0];
+				const reader = new FileReader();
+				console.log(file)
+				const image = document.getElementById("imagePreview");
+
+				reader.onload  = () =>{
+					image.src = reader.result
+				};
+
+				reader.readAsDataURL(file);
+			}
+			
 
 			const updateTotalScore = () => {
 				const menScore = parseInt(inputElemMen.value);
@@ -72,16 +96,24 @@
 				const totalScore = menScore + soupScore + toppingScore;
 				scoreElemen.innerText = totalScore;
 			};
-
+			//リセット
+			const reset = () => {
+				currentValueElemMen.innerText=50;
+				currentValueElemSoup.innerText=50;
+				currentValueElemTopping.innerText=50;
+				scoreElemen.innerText=150;
+			};
+			//点数を書き入れる
 			const setCurrentValue = (elem, val) => {
 				elem.innerText = val;
 			};
-
+			//イベントが起きた時に
 			const rangeOnChange = (e, elem) => {
 				setCurrentValue(elem, e.target.value);
 			};
-
+			//ぺージのなにかがリロードされたときに
 			window.onload = () => {
+				//値が変更されたときに
 				inputElemMen.addEventListener("input", (e) => {
 					rangeOnChange(e, currentValueElemMen);
 					updateTotalScore();
@@ -94,7 +126,9 @@
 					rangeOnChange(e, currentValueElemTopping);
 					updateTotalScore();
 				});
-
+				inputElemreset.addEventListener("click", (e) => {
+					reset();
+				});
 				setCurrentValue(currentValueElemMen, inputElemMen.value);
 				setCurrentValue(currentValueElemSoup, inputElemSoup.value);
 				setCurrentValue(currentValueElemTopping, inputElemTopping.value);
