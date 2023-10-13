@@ -12,7 +12,7 @@ h1{
 .item{
     display: inline-block;
     width: 30%;
-    margin: 0,1%,100px,1%;
+    vertical-align:middle;
 }
 
 .evaluaition{
@@ -21,8 +21,7 @@ h1{
 }
 .item2{
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+
     margin: 50,20,50,20;
 }
 #men{
@@ -39,3 +38,11 @@ textarea {
     width:1000px;
     height:200px;
   }
+
+.form{
+    vertical-align: middle;
+    background-color: rgba(255, 255, 255, 0.500);
+}
+form{
+    margin-left: 10%;
+}
