@@ -29,7 +29,21 @@ app.get("/", (req, res) => {
 	// res.sendStatus(400);
 	// res.status(500).send("エラー");
 	// res.status(500).json({msg: "エラーです"});
-	res.render("index");
+	pool.getConnection((err, connection) => {
+		if (err) throw err;
+
+		console.log("mysqlと接続中");
+
+		//データ取得
+		connection.query("SELECT * FROM info", (err, rows) => {
+			connection.release();
+
+			console.log(rows);
+			if (!err) {
+				res.render("index", { rows });
+			}
+		});
+	});
 });
 
 app.get("/form", (req, res) => {
@@ -56,7 +70,7 @@ app.post("/form", (req, res) => {
 	}
 
 	let imageFile = req.files.imageFile;
-	let uploadPath = __dirname + "/upload/" + imageFile.name;
+	let uploadPath = __dirname + "/public/upload/" + imageFile.name;
 	let shopName = req.body.shopName;
 	let menScore = req.body.menScore;
 	let soupScore = req.body.soupScore;
