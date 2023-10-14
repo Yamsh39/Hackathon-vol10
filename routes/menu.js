@@ -29,6 +29,25 @@ router.get("/:id", (req, res) => {
 	});
 });
 
+router.delete("/delete-file/:fileId", (req, res) => {
+    const deleteFile = req.params.fileId;
+    // ファイルのパスを正しく指定する
+    const filePath = path.join(__dirname, "../public/upload/", deleteFile);
+    fs.unlink(filePath, function (err) {
+        if (err) {
+        console.error("ファイルの削除に失敗しました: " + err);
+        console.log(deleteFile)
+        console.log(filePath)
+        res.status(500).json({ error: "写真の削除に失敗しました。" });
+        } else {
+        console.log("写真が削除されました。1");
+        console.log(filePath)
+        // ファイルの削除が成功したときのレスポンスを送信
+        res.status(200).json({ message: "写真が削除されました。2" });
+        }
+    });
+});
+
 router.delete("/:id", (req, res) => {
     const idToDelete = req.params.id;
   
@@ -49,25 +68,6 @@ router.delete("/:id", (req, res) => {
         }
       });
     });
-  });
-  
-  router.delete("/delete-file/:fileId", (req, res) => {
-      const deleteFile = req.params.fileId;
-      // ファイルのパスを正しく指定する
-      const filePath = path.join(__dirname, "../public/upload/", deleteFile);
-      fs.unlink(filePath, function (err) {
-          if (err) {
-          console.error("ファイルの削除に失敗しました: " + err);
-          console.log(deleteFile)
-          console.log(filePath)
-          res.status(500).json({ error: "写真の削除に失敗しました。" });
-          } else {
-          console.log("写真が削除されました。1");
-          console.log(filePath)
-          // ファイルの削除が成功したときのレスポンスを送信
-          res.status(200).json({ message: "写真が削除されました。2" });
-          }
-      });
   });
 
 module.exports = router;

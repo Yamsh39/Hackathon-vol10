@@ -91,24 +91,36 @@
 						"Content-Type": "application/json",
 					},
 				})
-					.then((response) => {
-						if (response.status === 200) {
-							fetch(`/menu/${idToDelete}`, {
-								method: "DELETE",
-								body: JSON.stringify({ deleteFile }), // deleteFile を送信
-								headers: {
-									"Content-Type": "application/json",
-								},
-							});
-							// 削除が成功したときの処理
-						} else {
-							// 削除が失敗したときの処理
-							alert("データの削除に失敗しました。");
-						}
-					})
-					.catch((error) => {
-						console.error("エラー: " + error);
-					});
+				.then((response) => {
+					if (response.status === 200) {
+						// データ削除が成功したときの処理
+						fetch(`/menu/${idToDelete}`, {
+							method: "DELETE",
+							body: JSON.stringify({ deleteFile }), // deleteFile を送信
+							headers: {
+								"Content-Type": "application/json",
+							},
+						})
+						.then((response) => {
+							if (response.status === 200) {
+								// データ削除が成功したときの処理
+								window.location.href = "http://localhost:8000"; // ページをリダイレクト
+							} else {
+								// データ削除が失敗したときの処理
+								alert("データの削除に失敗しました。");
+							}
+						})
+						.catch((error) => {
+							console.error("エラー: " + error);
+						});
+					} else {
+						// データ削除が失敗したときの処理
+						alert("データの削除に失敗しました。");
+					}
+				})
+				.catch((error) => {
+					console.error("エラー: " + error);
+				});
 			});
 		</script>
 	</body>
