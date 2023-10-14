@@ -9,8 +9,8 @@
 	
 	<body>
 		<div class="form">
-			<a href="/" height="200px">
-				<button height="200px" width="auto">戻る</button>
+			<a href="/">
+				<button class="back">戻る</button>
 			</a>
 			<h1>ラーメン登録</h1>
 			<form action="" method="post" enctype="multipart/form-data">
@@ -31,16 +31,21 @@
 				<div class="evaluation">
 					<div class="item2">
 						<label class="label">麺</label>
+						<div class="down" onclick="upDown(0,-1)">-</div>
 						<input type="range" id="men" min="0" max="100" step="1" name="menScore" />
+						<div class="up" onclick="upDown(0,1)">+</div>
 						<p><span id="current-value-men"></span></p>
 					</div>
 					<div class="item2">
 						<label class="label">スープ</label>
+						<div class="down" onclick="upDown(1,-1)">-</div>
 						<input type="range" id="Soup" min="0" max="100" step="1" name="soupScore" />
+						<div class="up" onclick="upDown(1,1)">+</div>
 						<p><span id="current-value-soup"></span></p>
 					</div>
 					<div class="item2">
 						<label class="label">トッピング</label>
+						<div class="down" onclick="upDown(2,-1)">-</div>
 						<input
 							type="range"
 							id="Topping"
@@ -49,6 +54,7 @@
 							step="1"
 							name="toppingScore"
 						/>
+						<div class="up" onclick="upDown(2,1)">+</div>
 						<p><span id="current-value-topping"></span></p>
 					</div>
 				</div>
@@ -69,11 +75,36 @@
 			const currentValueElemMen = document.getElementById("current-value-men");
 			const currentValueElemSoup = document.getElementById("current-value-soup");
 			const currentValueElemTopping = document.getElementById("current-value-topping");
+			const inputElemUp= document.getElementsByClassName("up")
 			
 			const inputElemreset = document.getElementById("reset");
 
 			const scoreElemen = document.getElementById("score");
 
+			function upDown(elem,num){
+				num=Number(num)
+				if(elem===0){
+				currentValueElemMen.innerText=String(Number(currentValueElemMen.innerText) + num);
+				scoreElemen.innerText=String(Number(scoreElemen.innerText) + num);;
+				inputElemMen.value=String(Number(inputElemMen.value) + num);;
+				console.log("0")
+				}
+				else if(elem===1){
+				currentValueElemSoup.innerText=String(Number(currentValueElemSoup.innerText) + num);
+				scoreElemen.innerText=String(Number(scoreElemen.innerText) + num);;
+				inputElemSoup.value=String(Number(inputElemSoup.value) + num);;
+				}
+				else{
+				currentValueElemTopping.innerText=String(Number(currentValueElemTopping.innerText) + num);
+				scoreElemen.innerText=String(Number(scoreElemen.innerText) + num);;
+				inputElemTopping.value=String(Number(inputElemTopping.value) + num);;
+				}
+			}
+			function down(){
+				currentValueElemMen.innerText--;
+				scoreElemen.innerText--;
+				inputElemMen.value--;
+			}
 
 			function previewPhoto(event){
 				const file = event.target.files[0];
