@@ -5,6 +5,10 @@ body {
 h1 {
     color: darkblue;
 }
+.title{
+    position: absolute;
+    top: 10%;
+}
 .shop{
     position: absolute;
     top:30%;
