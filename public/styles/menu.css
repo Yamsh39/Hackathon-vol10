@@ -1,42 +1,63 @@
 body {
-    background-image: url(../pictures/ramen51.png);
-    font-family: Arial, sans-serif;
+	background-image: url(../pictures/ramen51.png);
+	font-family: Arial, sans-serif;
 }
 h1 {
-    color: darkblue;
+	color: darkblue;
 }
-.menImage{
-    position: absolute;
-    top: -30px;
-    left: -300px;
-
+.menImage {
+	position: absolute;
+	top: -30px;
+	left: -300px;
 }
-.title{
-    position: absolute;
-    top: 10%;
+.title {
+	position: absolute;
+	top: 10%;
 }
-.shop{
-    position: absolute;
-    top:30%;
-    left:20%;
+.shop {
+	position: absolute;
+	top: 30%;
+	left: 20%;
 }
 .picture {
-    position: absolute;
-    top:20%;
-    right: 30%; 
+	position: absolute;
+	top: 20%;
+	right: 30%;
 }
-.text{
-    position: absolute;
-    top:70%;
-    left:70%;
+.text {
+	position: absolute;
+	top: 70%;
+	left: 70%;
 }
-.total{
-    position: absolute;
-    top:60%;
-    left:40%;
+.total {
+	position: absolute;
+	top: 60%;
+	left: 40%;
 }
-.point{
-    position: absolute;
-    top:50%;
-    left:10%;
+.fiveStarRate {
+	height: 65px;
+	overflow: hidden;
+}
+.fiveStarRate img {
+	position: relative;
+}
+#score1 {
+	transform: translateY(-15px);
+}
+#score2 {
+	transform: translateY(-80px);
+}
+#score3 {
+	transform: translateY(-150px);
+}
+#score4 {
+	transform: translateY(-210px);
+}
+#score5 {
+	transform: translateY(-275px);
+}
+.point {
+	position: absolute;
+	top: 50%;
+	left: 10%;
 }

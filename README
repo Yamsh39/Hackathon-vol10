@@ -2,8 +2,7 @@
 
 ```
 $ npm init -y
-$ npm i express nodemon
-$ npm install ejs
+$ npm i express nodemon ejs mysql express-fileupload
 ```
 
 package.json 内に　"dev": "nodemon server.js"　を追加する
