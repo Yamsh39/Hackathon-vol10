@@ -27,6 +27,7 @@ const query = "SELECT * FROM mymen-info";
 
 
     // connection.query(query, [id], (error, results) => {
+    //     const id = req.params.id;
     //     if (error) {
     //     console.error('データベースエラー:', error);
     //     res.status(500).send('データベースエラー');
@@ -46,27 +47,31 @@ const query = "SELECT * FROM mymen-info";
     //         res.status(404).send('データが見つかりませんでした');
     //     }
     //     }  
-        // データベースからデータを取得するなどの処理
+    //     データベースからデータを取得するなどの処理
     //     const rows = []; // データを取得または生成する
-    //     res.render("menu", { shopNameId, rows }); // `menu.ejs`にデータを渡す
+    //     res.render("menu", { shopNameId, rows , id }); // `menu.ejs`にデータを渡す
     // });
     
 
 
 router.get("/:id", (req, res) => {
+    const id = req.params.id;
     pool.getConnection((err, connection) => {
 		if (err) throw err;
 
 		console.log("mysqlと接続中");
 
-		//データ取得
-		connection.query("SELECT * FROM info", (err, rows) => {
-			connection.release();
+        connection.query("SELECT * FROM info WHERE id = ?", [id], (err, rows) => {
+            connection.release();
 
-			console.log(rows);
-			if (!err) {
-				res.render("menu", { rows });
-			}
+            console.log(rows);
+            if (!err && rows.length > 0) {
+                const row = {
+                    id: req.params.id,
+                }; 
+                // 特定のIDに関連するデータが見つかった場合
+                res.render("menu", { row, id });
+            } 
 		});
 	});
 });
