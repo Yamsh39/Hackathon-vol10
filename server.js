@@ -23,11 +23,6 @@ const pool = mysql.createPool({
 });
 
 app.get("/", (req, res) => {
-	// console.log("helloExpress");
-	// res.send("<h1>こんにちは</h1>");
-	// res.sendStatus(400);
-	// res.status(500).send("エラー");
-	// res.status(500).json({msg: "エラーです"});
 	pool.getConnection((err, connection) => {
 		if (err) throw err;
 
@@ -36,7 +31,6 @@ app.get("/", (req, res) => {
 		//データ取得
 		connection.query("SELECT * FROM info", (err, rows) => {
 			connection.release();
-
 			console.log(rows);
 			if (!err) {
 				res.render("index", { rows });

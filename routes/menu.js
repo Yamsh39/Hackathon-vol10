@@ -1,4 +1,5 @@
 const express = require("express");
+const { route } = require("express/lib/application");
 const router = express.Router();
 const mysql = require("mysql");
 
@@ -15,12 +16,10 @@ router.get("/:id", (req, res) => {
 		if (err) throw err;
 
 		console.log("mysqlと接続中");
-
+		const id = req.params.id;
 		//データ取得
-		connection.query("SELECT * FROM info", (err, rows) => {
+		connection.query("SELECT * FROM info WHERE ID = ?", id, (err, rows) => {
 			connection.release();
-
-			console.log(rows);
 			if (!err) {
 				res.render("menu", { rows });
 			}
