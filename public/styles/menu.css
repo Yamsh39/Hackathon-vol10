@@ -1,9 +1,47 @@
 body {
-	background-image: url(../pictures/ramen51.png);
+	/* background-image: url(../pictures/ramen51.png); */
 	font-family: Arial, sans-serif;
 }
 h1 {
 	color: darkblue;
+}
+.buttonDiv {
+	text-align: right;
+}
+.deleteButton {
+	min-width: 130px;
+	height: 40px;
+	color: #fff;
+	padding: 5px 10px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+	outline: none;
+	border-radius: 5px;
+	z-index: 0;
+	background: #fff;
+	overflow: hidden;
+	border: 2px solid #d90429;
+	color: #d90429;
+}
+.deleteButton:hover {
+	color: #fff;
+}
+.deleteButton:hover:after {
+	height: 100%;
+}
+.deleteButton:after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	transition: all 0.3s ease;
+	left: 0;
+	bottom: 0;
+	height: 0;
+	width: 100%;
+	background: #d90429;
 }
 .menImage {
 	position: absolute;

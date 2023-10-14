@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="/styles/menu.css" type="text/css" />
 	</head>
 	<body>
-		<h1><div class="title"><%= row.shopName %>の詳細情報</div></h1>
+		<div class="title"><h1><%= row.shopName %>の詳細情報</h1></div>
 		<div class="picture">
 			<div class="item">
 				<p class="menImage">
@@ -16,7 +16,9 @@
 				</p>
 			</div>
 		</div>
-		<button id="deleteButton" dataId="<%= row.id %>">削除</button>
+		<div class="buttonDiv">
+			<button id="deleteButton" class="deleteButton" dataId="<%= row.id %>">削除</button>
+		</div>
 		<div class="shop">
 			<h1>店名：<%= row.shopName %></h1>
 		</div>
@@ -51,7 +53,7 @@
 				</div>
 			</div>
 		</div>
-		<%= fiveStarRate %> <% }) %>
+		<% }) %>
 		<script>
 			document.getElementById("deleteButton").addEventListener("click", function () {
 				const idToDelete = this.getAttribute("dataId");
