@@ -80,9 +80,8 @@
 			deleteButton.addEventListener("click", function () {
 				const idToDelete = this.getAttribute("dataId");
 				const deleteFile = this.getAttribute("fileId");
-				// 追加: 確認ダイアログ表示
 				if (!confirm("本当に削除してもいいですか？")) {
-					return; // 「Cancel」を選択した場合、以降の処理はキャンセルされます
+					return;
 				}
 				fetch(`/menu/delete-file/${deleteFile}`, {
 					method: "DELETE",
@@ -93,20 +92,17 @@
 				})
 				.then((response) => {
 					if (response.status === 200) {
-						// データ削除が成功したときの処理
 						fetch(`/menu/${idToDelete}`, {
 							method: "DELETE",
-							body: JSON.stringify({ deleteFile }), // deleteFile を送信
+							body: JSON.stringify({ deleteFile }), 
 							headers: {
 								"Content-Type": "application/json",
 							},
 						})
 						.then((response) => {
 							if (response.status === 200) {
-								// データ削除が成功したときの処理
-								window.location.href = "http://localhost:8000"; // ページをリダイレクト
+								window.location.href = "http://localhost:8000"; 
 							} else {
-								// データ削除が失敗したときの処理
 								alert("データの削除に失敗しました。");
 							}
 						})
@@ -114,7 +110,6 @@
 							console.error("エラー: " + error);
 						});
 					} else {
-						// データ削除が失敗したときの処理
 						alert("データの削除に失敗しました。");
 					}
 				})

@@ -11,9 +11,7 @@ app.use(fileUpload());
 app.use(express.static(__dirname + "/public"));
 
 app.set("view engine", "ejs");
-// app.use(mylogger);
 
-// connection pool
 const pool = mysql.createPool({
 	connectionLimit: 10,
 	host: "localhost",
@@ -28,7 +26,6 @@ app.get("/", (req, res) => {
 
 		console.log("mysqlと接続中");
 
-		//データ取得
 		connection.query("SELECT * FROM info", (err, rows) => {
 			connection.release();
 			console.log(rows);
@@ -45,7 +42,6 @@ app.get("/ranking", (req, res) => {
 
 		console.log("mysqlと接続中");
 
-		//データ取得
 		connection.query("SELECT * FROM info", (err, rows) => {
 			connection.release();
 			console.log(rows);
@@ -82,7 +78,6 @@ app.get("/form", (req, res) => {
 
 		console.log("mysqlと接続中");
 
-		//データ取得
 		connection.query("SELECT * FROM info", (err, rows) => {
 			connection.release();
 
@@ -107,13 +102,10 @@ app.post("/form", (req, res) => {
 	let toppingScore = req.body.toppingScore;
 	let comment = req.body.comment;
 
-	//サーバーに画像ファイルを置く場所の指定
 	imageFile.mv(uploadPath, function (err) {
 		if (err) return res.status(500).send(err);
-		// res.send("画像アップロードに成功しました");
 	});
 
-	//mysqlに画像ファイルの名前を追加して保存する
 	pool.getConnection((err, connection) => {
 		if (err) throw err;
 
@@ -136,9 +128,6 @@ app.post("/form", (req, res) => {
 
 //ルーティング設計
 app.use("/menu", menuRouter);
-// app.use("/auth", authRouter);
-// app.use("/customer", customreRouter);
-// app.use("/product", productRouter);
 
 //ミドルウェア
 function mylogger(req, res, next) {
