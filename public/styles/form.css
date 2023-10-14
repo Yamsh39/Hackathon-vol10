@@ -9,10 +9,16 @@ h1{
     text-align: center;
 }
 
+.back{
+    height: 100px;
+    width: 200px;
+}
+
 .item{
     display: inline-block;
-    width: 30%;
+    width: 29%;
     vertical-align:middle;
+    text-align: center;
 }
 
 .evaluaition{
@@ -21,7 +27,6 @@ h1{
 }
 .item2{
     width: 100%;
-
     margin: 50,20,50,20;
 }
 #men{
