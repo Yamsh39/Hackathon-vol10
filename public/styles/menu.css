@@ -1,45 +1,100 @@
 body {
-	background-image: url(../pictures/ramen51.png);
+	/* background-image: url(../pictures/ramen51.png); */
 	font-family: Arial, sans-serif;
 }
 h1 {
 	color: darkblue;
 }
-.menImage {
-	position: absolute;
-	top: -30px;
-	left: -300px;
+.shopName {
+	font-size: 40px;
+}
+.header {
+	display: flex;
+	justify-content: space-between;
 }
 .title {
-	position: absolute;
-	top: 10%;
+	margin-left: 50px;
+	font-size: 30px;
 }
-.shop {
-	position: absolute;
-	top: 30%;
-	left: 20%;
+.buttonDiv {
+	margin-top: 50px;
+	margin-right: 50px;
 }
-.picture {
-	position: absolute;
-	top: 20%;
-	right: 30%;
+.deleteButton {
+	min-width: 150px;
+	height: 60px;
+	color: #fff;
+	padding: 5px 10px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+	outline: none;
+	border-radius: 5px;
+	z-index: 0;
+	background: #fff;
+	overflow: hidden;
+	border: 2px solid #d90429;
+	color: #d90429;
 }
-.text {
+.deleteButton:hover {
+	color: #fff;
+}
+.deleteButton:hover:after {
+	height: 100%;
+}
+.deleteButton:after {
+	content: "";
 	position: absolute;
-	top: 70%;
-	left: 70%;
+	z-index: -1;
+	transition: all 0.3s ease;
+	left: 0;
+	bottom: 0;
+	height: 0;
+	width: 100%;
+	background: #d90429;
 }
 .total {
-	position: absolute;
-	top: 60%;
-	left: 40%;
+	float: left;
+	margin-left: -60px;
 }
+.main {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 100px;
+}
+.shop {
+	margin-top: 100p;
+}
+/* ======= */
+.container {
+	display: flex;
+	justify-content: space-between;
+}
+.point {
+	display: flex;
+	flex-direction: column;
+	margin-left: 150px;
+}
+.pointItem {
+	font-size: 30px;
+}
+.text {
+	font-size: 20px;
+	margin-right: 550px;
+}
+.textArea {
+	background-color: aliceblue;
+}
+
 .fiveStarRate {
 	height: 65px;
 	overflow: hidden;
 }
 .fiveStarRate img {
-	position: relative;
+	object-fit: contain;
+	background-repeat: no-repeat;
 }
 #score1 {
 	transform: translateY(-15px);
@@ -55,9 +110,4 @@ h1 {
 }
 #score5 {
 	transform: translateY(-275px);
-}
-.point {
-	position: absolute;
-	top: 50%;
-	left: 10%;
 }
