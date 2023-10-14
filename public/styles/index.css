@@ -107,6 +107,10 @@ body {
 	width: 100%;
 }
 
+.link_href {
+	text-decoration: none;
+}
+
 .item {
 	margin-bottom: 20px;
 }
@@ -124,6 +128,7 @@ body {
 	font-size: 2em;
 	font-weight: bold;
 	text-align: center;
+	color: black;
 }
 #sidebarMenu {
 	height: 100%;

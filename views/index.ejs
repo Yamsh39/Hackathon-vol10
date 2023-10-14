@@ -30,9 +30,11 @@
     <div id='center' class="main">
         <div class="mainInner">
         <% rows.forEach(function(row) { %>
-            <div class="item">
+            <div class="item" >
+                <a href="/menu/<%= row.id  %>" target="_blank" class="link_href">
                 <p class="menImage"><img src="/upload/<%= row.image %>" alt="" width="400" height="225"></p>
                 <p class="shopName"><%= row.shopName %></p>
+                </a>
             </div>
         <% }); %>
         </div>
