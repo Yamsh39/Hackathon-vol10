@@ -1,0 +1,32 @@
+body {
+    background-image: url(../pictures/ramen51.png);
+    font-family: Arial, sans-serif;
+}
+h1 {
+    color: darkblue;
+}
+.shop{
+    position: absolute;
+    top:30%;
+    left:20%;
+}
+.picture {
+    position: absolute;
+    top:20%;
+    right: 30%; 
+}
+.text{
+    position: absolute;
+    top:70%;
+    left:70%;
+}
+.total{
+    position: absolute;
+    top:60%;
+    left:40%;
+}
+.point{
+    position: absolute;
+    top:50%;
+    left:10%;
+}
