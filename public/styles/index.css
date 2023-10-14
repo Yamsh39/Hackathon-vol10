@@ -5,7 +5,7 @@ body {
 	height: 100%;
 }
 body {
-	background: #fff;
+	background: #f4f3ef;
 	padding: 0;
 	margin: 0;
 	font-family: "Varela Round", sans-serif;
@@ -102,28 +102,38 @@ body {
 .mainInner {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: flex-start;
 	height: 100%;
 	width: 100%;
 }
-
 .link_href {
 	text-decoration: none;
 }
-
 .item {
-	margin-bottom: 20px;
+	margin: 52px;
 }
-
 .menImage {
+	animation: img-wrap 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes img-wrap {
+	0% {
+		clip-path: circle(0 at 50% 50%);
+		-webkit-clip-path: circle(0 at 50% 50%);
+	}
+
+	100% {
+		clip-path: circle(100% at 50% 50%);
+		-webkit-clip-path: circle(100% at 50% 50%);
+	}
+}
+.menImage img {
 	max-width: 100%;
 	max-height: 100%;
-	width: 300px;
-	height: 200px;
-	text-align: center;
+	align-items: center;
+	width: 400px;
+	height: 300px;
 	object-fit: contain;
 }
-
 .shopName {
 	font-size: 2em;
 	font-weight: bold;

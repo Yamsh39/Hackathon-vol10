@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const contentsRouter = require("./routes/contents");
 const menuRouter = require("./routes/menu");
 const mysql = require("mysql");
 const fileUpload = require("express-fileupload");
@@ -24,11 +23,6 @@ const pool = mysql.createPool({
 });
 
 app.get("/", (req, res) => {
-	// console.log("helloExpress");
-	// res.send("<h1>こんにちは</h1>");
-	// res.sendStatus(400);
-	// res.status(500).send("エラー");
-	// res.status(500).json({msg: "エラーです"});
 	pool.getConnection((err, connection) => {
 		if (err) throw err;
 
@@ -37,7 +31,6 @@ app.get("/", (req, res) => {
 		//データ取得
 		connection.query("SELECT * FROM info", (err, rows) => {
 			connection.release();
-
 			console.log(rows);
 			if (!err) {
 				res.render("index", { rows });
@@ -89,7 +82,6 @@ app.post("/form", (req, res) => {
 
 		console.log("mysqlと接続中");
 		connection.query(
-			// `INSERT INTO info (imageName) VALUES ("${imageFile.name}")`,
 			`INSERT INTO info (shopName, image, men, soup, topping, comment) VALUES ("${shopName}", "${imageFile.name}", "${menScore}", "${soupScore}", "${toppingScore}", "${comment}")`,
 			(err, rows) => {
 				connection.release();
@@ -106,7 +98,6 @@ app.post("/form", (req, res) => {
 });
 
 //ルーティング設計
-app.use("/contents", contentsRouter);
 app.use("/menu", menuRouter);
 // app.use("/auth", authRouter);
 // app.use("/customer", customreRouter);

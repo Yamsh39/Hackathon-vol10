@@ -1,79 +1,52 @@
 const express = require("express");
+const { route } = require("express/lib/application");
 const router = express.Router();
-const app = express();
-const path = require('path');
-const mysql = require('mysql');
-const query = "SELECT * FROM mymen-info";
-// const req = 
-// const id = req.params.id;
+const mysql = require("mysql");
 
-// app.set('view engine', 'ejs');
-// app.set('views', path.join(__dirname, 'views'));
-
-// const connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: '',
-//     database: 'mymen-info'
-//   });
-    const pool = mysql.createPool({
-        connectionLimit: 10,
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "mymen-info",
-    });
-
-
-
-    // connection.query(query, [id], (error, results) => {
-    //     const id = req.params.id;
-    //     if (error) {
-    //     console.error('データベースエラー:', error);
-    //     res.status(500).send('データベースエラー');
-    //     } else {
-    //     if (results.length > 0) {
-    //         // rows[]を初期化し、新しいデータで上書き
-    //         rows.length = 0; // rows[]をクリア
-    
-    //         // resultsからデータをrows[]に格納
-    //         for (let i = 0; i < results.length; i++) {
-    //         rows.push(results[i]);
-    //         }
-    
-    //         // データをJSON形式でクライアントに送信
-    //         res.json(results[0]);
-    //     } else {
-    //         res.status(404).send('データが見つかりませんでした');
-    //     }
-    //     }  
-    //     データベースからデータを取得するなどの処理
-    //     const rows = []; // データを取得または生成する
-    //     res.render("menu", { shopNameId, rows , id }); // `menu.ejs`にデータを渡す
-    // });
-    
-
+const pool = mysql.createPool({
+	connectionLimit: 10,
+	host: "localhost",
+	user: "root",
+	password: "",
+	database: "mymen-info",
+});
 
 router.get("/:id", (req, res) => {
-    const id = req.params.id;
-    pool.getConnection((err, connection) => {
+	pool.getConnection((err, connection) => {
 		if (err) throw err;
 
 		console.log("mysqlと接続中");
-
-        connection.query("SELECT * FROM info WHERE id = ?", [id], (err, rows) => {
-            connection.release();
-
-            console.log(rows);
-            if (!err && rows.length > 0) {
-                const row = {
-                    id: req.params.id,
-                }; 
-                // 特定のIDに関連するデータが見つかった場合
-                res.render("menu", { row, id });
-            } 
+		const id = req.params.id;
+		//データ取得
+		connection.query("SELECT * FROM info WHERE ID = ?", id, (err, rows) => {
+			connection.release();
+			if (!err) {
+				res.render("menu", { rows });
+			}
 		});
 	});
+});
+
+router.delete("/:id", (req, res) => {
+  const idToDelete = req.params.id;
+
+  pool.getConnection((err, connection) => {
+    if (err) {
+      throw err;
+    }
+
+    connection.query("DELETE FROM info WHERE ID = ?", idToDelete, (err, result) => {
+      connection.release();
+
+      if (err) {
+        console.error("データの削除中にエラーが発生しました: " + err);
+        res.status(500).json({ error: "データの削除に失敗しました。" });
+      } else {
+        console.log("削除された行数: " + result.affectedRows);
+        res.status(200).json({ message: "データが削除されました。" });
+      }
+    });
+  });
 });
 
 module.exports = router;

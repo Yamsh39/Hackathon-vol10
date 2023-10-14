@@ -1,45 +1,55 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My 麺</title>
-    <link rel="stylesheet" href="styles/index.css">
-</head>
-<body>
-    <div class="header">
-        <div class="headerInfo">
-            <p id="titleName">My麺</p>
-            <a href="/form" id="signUpButton">
-                <button class="button-88" role="button">追加</button>
-            </a>
-        </div>
-    </div>
-    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
-    <label for="openSidebarMenu" class="sidebarIconToggle">
-        <div class="spinner diagonal part-1"></div>
-        <div class="spinner horizontal"></div>
-        <div class="spinner diagonal part-2"></div>
-    </label>
-    <div id="sidebarMenu">
-        <ul class="sidebarMenuInner">
-        <li>My 麺</span></li>
-        <li><a href="https://github.com/Yamsh39/Hackathon-vol10" target="_blank">Website's repository</a></li>
-        </ul>
-    </div>
-    <div id='center' class="main">
-        <div class="mainInner">
-        <% rows.forEach(function(row) { %>
-            <div class="item" >
-                <a href="/menu/<%= row.id  %>" target="_blank" class="link_href">
-                <p class="menImage"><img src="/upload/<%= row.image %>" alt="" width="400" height="225"></p>
-                <p class="shopName"><%= row.shopName %></p>
-                </a>
-            </div>
-        <% }); %>
-        </div>
-    </div>
-
-    <!-- <script></script>-->
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>My 麺</title>
+		<link rel="stylesheet" type="text/css" href="/styles/index.css" />
+	</head>
+	<body>
+		<div class="header">
+			<div class="headerInfo">
+				<p id="titleName">My麺</p>
+				<a href="/form" id="signUpButton">
+					<button class="button-88" role="button">追加</button>
+				</a>
+			</div>
+		</div>
+		<input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" />
+		<label for="openSidebarMenu" class="sidebarIconToggle">
+			<div class="spinner diagonal part-1"></div>
+			<div class="spinner horizontal"></div>
+			<div class="spinner diagonal part-2"></div>
+		</label>
+		<div id="sidebarMenu">
+			<ul class="sidebarMenuInner">
+				<li>My 麺</li>
+				<li>
+					<a href="https://github.com/Yamsh39/Hackathon-vol10" target="_blank"
+						>Website's repository</a
+					>
+				</li>
+			</ul>
+		</div>
+		<div id="center" class="main">
+			<div class="mainInner">
+				<% rows.forEach(function(row) { %>
+				<div class="item">
+					<a href="/menu/<%= row.id  %>" target="_blank" class="link_href">
+						<p class="menImage">
+							<img src="/upload/<%= row.image %>" alt="" width="400" height="225" />
+						</p>
+						<p class="shopName"><%= row.shopName %></p>
+					</a>
+				</div>
+				<% }); %>
+			</div>
+		</div>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const sidebarCheckbox = document.querySelector('input[type="checkbox"]');
+				sidebarCheckbox.checked = false;
+			});
+		</script>
+	</body>
 </html>
