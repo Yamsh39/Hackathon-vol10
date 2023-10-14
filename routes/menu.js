@@ -1,27 +1,31 @@
 const express = require("express");
 const router = express.Router();
+const mysql = require("mysql");
 
-router.get("/", (req, res) => {
-	res.send("登録したメニュー");
+const pool = mysql.createPool({
+	connectionLimit: 10,
+	host: "localhost",
+	user: "root",
+	password: "",
+	database: "mymen-info",
 });
 
 router.get("/:id", (req, res) => {
-	res.send(`
-        <html>
-            <head>
-                <title>${req.params.id}の情報</title>
-            </head>
-            <body>
-                <h1>${req.params.id}の詳細情報</h1>
-                <p>写真</p>
-            </body>
-        </html>
-    `);
-});
+	pool.getConnection((err, connection) => {
+		if (err) throw err;
 
-router.delete("/:id", (req, res) => {
-	const shopNameId = req.params.id;
-	res.status(204).send();
+		console.log("mysqlと接続中");
+
+		//データ取得
+		connection.query("SELECT * FROM info", (err, rows) => {
+			connection.release();
+
+			console.log(rows);
+			if (!err) {
+				res.render("menu", { rows });
+			}
+		});
+	});
 });
 
 module.exports = router;
