@@ -8,10 +8,21 @@
 	</head>
 	
 	<body>
+		<div class="header">
+			<div class="headerInfo">
+				<p id="titleName">My麺</p>
+			</div>
+		</div>
+		<input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" />
+		<label for="openSidebarMenu" class="sidebarIconToggle">
+			<div class="spinner diagonal part-1"></div>
+			<div class="spinner horizontal"></div>
+			<div class="spinner diagonal part-2"></div>
+		</label>
+		<div class="back">
+		<a href="/" id="back">戻る</a>
+		</div>
 		<div class="form">
-			<a href="/">
-				<button class="back">戻る</button>
-			</a>
 			<h1>ラーメン登録</h1>
 			<form action="" method="post" enctype="multipart/form-data">
 				<div class="head">
@@ -31,39 +42,45 @@
 				<div class="evaluation">
 					<div class="item2">
 						<label class="label">麺</label>
-						<div class="down" onclick="upDown(0,-1)">-</div>
-						<input type="range" id="men" min="0" max="100" step="1" name="menScore" />
-						<div class="up" onclick="upDown(0,1)">+</div>
+						<div class="item2-inside">
+							<div class="down" onclick="upDown(0,-1)">-</div>
+							<input type="range" id="men" min="0" max="100" step="1" name="menScore" />
+							<div class="up" onclick="upDown(0,1)">+</div>
+						</div>
 						<p><span id="current-value-men"></span></p>
 					</div>
 					<div class="item2">
 						<label class="label">スープ</label>
-						<div class="down" onclick="upDown(1,-1)">-</div>
-						<input type="range" id="Soup" min="0" max="100" step="1" name="soupScore" />
-						<div class="up" onclick="upDown(1,1)">+</div>
+						<div class="item2-inside">
+							<div class="down" onclick="upDown(1,-1)">-</div>
+							<input type="range" id="Soup" min="0" max="100" step="1" name="soupScore" />
+							<div class="up" onclick="upDown(1,1)">+</div>
+						</div>
 						<p><span id="current-value-soup"></span></p>
 					</div>
 					<div class="item2">
 						<label class="label">トッピング</label>
-						<div class="down" onclick="upDown(2,-1)">-</div>
-						<input
-							type="range"
-							id="Topping"
-							min="0"
-							max="100"
-							step="1"
-							name="toppingScore"
-						/>
-						<div class="up" onclick="upDown(2,1)">+</div>
+						<div class="item2-inside">
+							<div class="down" onclick="upDown(2,-1)">-</div>
+							<input
+								type="range"
+								id="Topping"
+								min="0"
+								max="100"
+								step="1"
+								name="toppingScore"
+							/>
+							<div class="up" onclick="upDown(2,1)">+</div>
+						</div>
 						<p><span id="current-value-topping"></span></p>
 					</div>
 				</div>
-				<div class="item">
+				<div class="item3">
 					<label class="label">コメント</label>
 					<textarea class="inputs" name="comment"></textarea>
 				</div>
-				<div class="">
-					<input type="submit" value="登録" />
+				<div class="button">
+					<input id="submit" type="submit" value="登録" />
 					<input id="reset" type="reset" value="リセット" />
 				</div>
 			</form>
@@ -83,27 +100,22 @@
 
 			function upDown(elem,num){
 				num=Number(num)
-				if(elem===0){
+				if(elem===0 && currentValueElemMen.innerText<100 && currentValueElemMen.innerText>0){
 				currentValueElemMen.innerText=String(Number(currentValueElemMen.innerText) + num);
 				scoreElemen.innerText=String(Number(scoreElemen.innerText) + num);;
 				inputElemMen.value=String(Number(inputElemMen.value) + num);;
 				console.log("0")
 				}
-				else if(elem===1){
+				else if(elem===1 && currentValueElemSoup.innerText<100 && currentValueElemSoup.innerText>0){
 				currentValueElemSoup.innerText=String(Number(currentValueElemSoup.innerText) + num);
 				scoreElemen.innerText=String(Number(scoreElemen.innerText) + num);;
 				inputElemSoup.value=String(Number(inputElemSoup.value) + num);;
 				}
-				else{
+				else if(elem===2 && currentValueElemTopping.innerText<100 && currentValueElemTopping.innerText>0){
 				currentValueElemTopping.innerText=String(Number(currentValueElemTopping.innerText) + num);
 				scoreElemen.innerText=String(Number(scoreElemen.innerText) + num);;
 				inputElemTopping.value=String(Number(inputElemTopping.value) + num);;
 				}
-			}
-			function down(){
-				currentValueElemMen.innerText--;
-				scoreElemen.innerText--;
-				inputElemMen.value--;
 			}
 
 			function previewPhoto(event){
