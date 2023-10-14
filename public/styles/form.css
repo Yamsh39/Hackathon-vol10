@@ -1,8 +1,102 @@
-body{
-    height: 100vh;
-    background-image: url(../pictures/ramen48.png);
-    background-repeat: repeat;
+@import url("https://fonts.googleapis.com/css?family=Varela+Round");
+html,
+body {
+	overflow-x: hidden;
+	height: 100%;
 }
+body {
+	background: #f4f3ef;
+	padding: 0;
+	margin: 0;
+	font-family: "Varela Round", sans-serif;
+    font-size: 30px;
+}
+/* header */
+
+.headerInfo {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 0;
+	padding-top: 0;
+	position: sticky;
+	background-color: black;
+}
+
+#titleName {
+	margin: 10px 60px;
+	font-size: 30px;
+	font-family: "游ゴシック";
+	color: aliceblue;
+}
+
+#signUpButton {
+	text-decoration: none;
+}
+
+#main {
+	display: flex;
+	margin-top: 60px;
+	width: 100%;
+	height: 100vh;
+}
+
+#sideBar {
+	border: 3px solid #ccc;
+	flex: 1;
+	width: 100%;
+}
+
+#items {
+	border: 3px solid #ccc;
+	flex: 3;
+	width: 100%;
+}
+
+/*以下変更非推奨*/
+.button-88 {
+	display: flex;
+	align-items: center;
+	font-family: inherit;
+	font-weight: 500;
+	font-size: 16px;
+	padding: 0.7em 1.4em 0.7em 1.1em;
+	margin-top: 7px;
+	margin-right: 20px;
+	color: white;
+	background: #ad5389;
+	background: linear-gradient(0deg, rgba(20, 167, 62, 1) 0%, rgba(102, 247, 113, 1) 100%);
+	border: none;
+	box-shadow: 0 0.7em 1.5em -0.5em #14a73e98;
+	letter-spacing: 0.05em;
+	border-radius: 20em;
+	cursor: pointer;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+}
+
+.button-88:hover {
+	box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
+}
+
+.button-88:active {
+	box-shadow: 0 0.3em 1em -0.5em #14a73e98;
+}
+
+.header {
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 100%;
+	box-shadow: none;
+	position: fixed;
+	height: 60px !important;
+	overflow: hidden;
+	z-index: 10;
+	background-color: black;
+}
+
+/* headerここまで */
 
 h1{
     font-size: 60px;
@@ -10,8 +104,24 @@ h1{
 }
 
 .back{
+    position: fixed;
+    top: 100px;
+    left: 50px;
+}
+
+#back{
+    display: block;
+    text-align: center;
+    top: 40%;
+    text-decoration: none;
+    width: 100px;
     height: 100px;
-    width: 200px;
+    margin: auto;
+    font-weight: bold;
+    border-radius: 0.3rem;
+    background-image: url(../pictures/naruto.png);
+    background-size: contain;
+    color: black;
 }
 
 .item{
@@ -25,29 +135,80 @@ h1{
     width: 100%;
     font-size: 20px;
 }
+
 .item2{
     width: 100%;
-    margin: 50,20,50,20;
+    margin: 50px;
 }
+
+.item2-inside{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.up{
+    text-align: center;
+    width: 35px;
+    border: 1px solid black;
+    border-radius: 30px;
+    user-select: none;
+}
+
+.down{
+    text-align: center;
+    width: 35px;
+    border: 1px solid black;
+    border-radius: 30px;
+    user-select: none;
+}
+
 #men{
     width: 70%;
+    margin-left: 50px;
+    margin-right: 50px;
 }
+
 #Soup{
     width: 70%;
+    margin-left: 50px;
+    margin-right: 50px;
 }
+
 #Topping{
     width: 70%;
+    margin-left: 50px;
+    margin-right: 50px;
 }
+
 textarea {
     resize: none;
     width:1000px;
     height:200px;
-  }
+}
 
 .form{
     vertical-align: middle;
-    background-color: rgba(255, 255, 255, 0.500);
+    /* background-color: rgba(255, 255, 255, 0.500); */
 }
+
 form{
     margin-left: 10%;
+}
+
+#submit{
+    padding:50px;
+    margin-right: 10%;
+    border:black 2px solid;
+    border-radius: 30px;
+}
+
+#reset{
+    padding: 50px;
+    margin-left: 10%;
+    border:black 2px solid;
+    border-radius: 30px;
+}
+
+.button{
+    text-align: center;
 }

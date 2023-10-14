@@ -9,14 +9,14 @@
 	</head>
 	<body>
 		<h1><div class="title"><%= row.shopName %>の詳細情報</div></h1>
-
 		<div class="picture">
 			<div class="item">
 				<p class="menImage">
-					<img src="/upload/<%= row.image %>" alt="" width="400" height="225" />
+					<img src="/upload/<%= row.image %>" alt="" width="auto" height="400" />
 				</p>
 			</div>
-		</div>
+		</div> 
+    <button id="deleteButton" dataId="<%= row.id %>">削除</button>
 		<div class="shop">
 			<h1>店名：<%= row.shopName %></h1>
 		</div>
@@ -45,5 +45,30 @@
 		</div>
 		<script></script>
 		<% }) %>
+    <script>
+      document.getElementById('deleteButton').addEventListener('click', function() {
+        const idToDelete = this.getAttribute('dataId');
+    
+        // 追加: 確認ダイアログ表示
+        if (!confirm('本当に消してもいいですか？')) {
+          return; // 「Cancel」を選択した場合、以降の処理はキャンセルされます
+        }
+    
+        fetch(`/menu/${idToDelete}`, {
+          method: 'DELETE'
+        })
+          .then(response => {
+            if (response.status === 200) {
+              alert('データが削除されました。');
+              // 必要に応じてリダイレクトなどのアクションを追加
+            } else {
+              alert('データの削除に失敗しました。');
+            }
+          })
+          .catch(error => {
+            console.error('エラー: ' + error);
+          });
+      });
+    </script>
 	</body>
 </html>

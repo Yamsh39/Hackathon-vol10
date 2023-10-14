@@ -27,4 +27,26 @@ router.get("/:id", (req, res) => {
 	});
 });
 
+router.delete("/:id", (req, res) => {
+  const idToDelete = req.params.id;
+
+  pool.getConnection((err, connection) => {
+    if (err) {
+      throw err;
+    }
+
+    connection.query("DELETE FROM info WHERE ID = ?", idToDelete, (err, result) => {
+      connection.release();
+
+      if (err) {
+        console.error("データの削除中にエラーが発生しました: " + err);
+        res.status(500).json({ error: "データの削除に失敗しました。" });
+      } else {
+        console.log("削除された行数: " + result.affectedRows);
+        res.status(200).json({ message: "データが削除されました。" });
+      }
+    });
+  });
+});
+
 module.exports = router;

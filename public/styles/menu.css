@@ -5,6 +5,12 @@ body {
 h1 {
     color: darkblue;
 }
+.menImage{
+    position: absolute;
+    top: -30px;
+    left: -300px;
+
+}
 .title{
     position: absolute;
     top: 10%;
