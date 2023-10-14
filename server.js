@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const contentsRouter = require("./routes/contents");
 const menuRouter = require("./routes/menu");
 const mysql = require("mysql");
 const fileUpload = require("express-fileupload");
@@ -89,7 +88,6 @@ app.post("/form", (req, res) => {
 
 		console.log("mysqlと接続中");
 		connection.query(
-			// `INSERT INTO info (imageName) VALUES ("${imageFile.name}")`,
 			`INSERT INTO info (shopName, image, men, soup, topping, comment) VALUES ("${shopName}", "${imageFile.name}", "${menScore}", "${soupScore}", "${toppingScore}", "${comment}")`,
 			(err, rows) => {
 				connection.release();
@@ -106,7 +104,6 @@ app.post("/form", (req, res) => {
 });
 
 //ルーティング設計
-app.use("/contents", contentsRouter);
 app.use("/menu", menuRouter);
 // app.use("/auth", authRouter);
 // app.use("/customer", customreRouter);
