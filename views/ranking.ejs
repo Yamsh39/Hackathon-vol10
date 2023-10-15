@@ -4,22 +4,65 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>ランキング</title>
-		<link rel="stylesheet" type="text/css" href="/styles/form.css" />
+		<link rel="stylesheet" type="text/css" href="/styles/ranking.css" />
     </head>
 
     <body>
-        <h1>man</h1>
+      <div class="header">
+        <div class="headerInfo">
+          <p id="titleName">My麺</p>
+        </div>
+      </div>
+      <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" />
+      <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+      </label>
+      <div class="back">
+      <a href="/" id="back"></a>
+      </div>
+      <p class="back2">戻る</p>
+        <h1>ランキング</h1>
         <p>
-          <% for (let n = 0; n < rows.length; n++) {%>
+          <div class="item">
+            <a href="/menu/<%= rows[list2[0]].id %>">
+              <p class="shopName"><span id="Top">1位</span><%= rows[list2[0]].shopName %></p>
+              <p class="menimage">
+                <img src="/upload/<%= rows[list2[0]].image %>" alt="" width="400" height="auto">
+              </p>
+            </a>
+          </div>
+          <div class="item">
+            <a href="/menu/<%= rows[list2[1]].id %>">
+              <p class="shopName"><span id="second">2位</span><%= rows[list2[1]].shopName %></p>
+              <p class="menimage">
+                <img src="/upload/<%= rows[list2[1]].image %>" alt="" width="400" height="auto">
+              </p>
+            </a>
+          </div>
+          <div class="item">
+            <a href="/menu/<%= rows[list2[2]].id %>">
+              <p class="shopName"><span id="third">3位</span><%= rows[list2[2]].shopName %></p>
+              <p class="menimage">
+                <img src="/upload/<%= rows[list2[2]].image %>" alt="" width="400" height="auto">
+              </p>
+            </a>
+          </div>
+      </p>
+          <% for (let n = 3; n < rows.length; n++) {%>
             <div class="item">
               <a href="/menu/<%= rows[list2[n]].id %>">
-              <p class="menimage">
-                <img src="/upload/<%= rows[list2[n]].image %>" alt="" width="400" height="225">
-              </p>
-              <p class="shopName"><%= rows[list2[n]].shopName %></p>
-          </a>
-        </div>
+                <p class="shopName"><%= n+1  %>位<%= rows[list2[n]].shopName %></p>
+                <p class="menimage">
+                  <img src="/upload/<%= rows[list2[n]].image %>" alt="" width="400" height="auto">
+                </p>
+              </a>
+            </div>
           <% } %>
         </p>
+        <script>
+          
+        </script>
     </body>
 </html>

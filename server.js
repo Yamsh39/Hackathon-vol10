@@ -53,7 +53,7 @@ app.get("/ranking", (req, res) => {
 				list.push(rows[i].soup+rows[i].men+rows[i].topping)
 			}
 			console.log(list)
-			while (num!== 3) {
+			while (num!== len) {
 				let maxIndex = 0;
 				for (let i = 1; i < list.length; i++) {
 					if (list[i] > list[maxIndex]) {
@@ -61,7 +61,7 @@ app.get("/ranking", (req, res) => {
 					}
 				}
 				list2.push(maxIndex);
-				delete list[maxIndex]
+				list.splice(maxIndex,1,-1)
 				num++
 			}
 			console.log(list2)
