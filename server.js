@@ -39,6 +39,23 @@ app.get("/", (req, res) => {
 	});
 });
 
+app.get("/ranking", (req, res) => {
+	pool.getConnection((err, connection) => {
+		if (err) throw err;
+
+		console.log("mysqlと接続中");
+
+		//データ取得
+		connection.query("SELECT * FROM info", (err, rows) => {
+			connection.release();
+			console.log(rows);
+			if (!err) {
+				res.render("ranking", { rows });
+			}
+		});
+	});
+})
+
 app.get("/form", (req, res) => {
 	pool.getConnection((err, connection) => {
 		if (err) throw err;
