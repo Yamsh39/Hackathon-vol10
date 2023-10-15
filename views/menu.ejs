@@ -34,11 +34,20 @@
 		</div>
 
 		<div class="container">
-			<div class="point">
-				<p class="pointItem">麺: <%= row.men %></p>
-				<p class="pointItem">スープ: <%= row.soup %></p>
-				<p class="pointItem">トッピング: <%= row.topping %></p>
-			</div>
+			<dl class="point">
+				<div class="group">
+					<dt>麺</dt>
+					<dd>: <%= row.men %></dd>
+				</div>
+				<div class="group">
+					<dt>スープ</dt>
+					<dd>: <%= row.soup %></dd>
+				</div>
+				<div class="group">
+					<dt>トッピング</dt>
+					<dd>: <%= row.topping %></dd>
+				</div>
+			</dl>
 
 			<div class="text">
 				<h2>コメント</h2>
