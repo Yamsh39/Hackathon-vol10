@@ -1,6 +1,7 @@
 body {
 	/* background-image: url(../pictures/ramen51.png); */
 	font-family: Arial, sans-serif;
+	background-color: #f4f3ef;
 }
 h1 {
 	color: darkblue;
@@ -67,25 +68,35 @@ h1 {
 .shop {
 	margin-top: 100p;
 }
-/* ======= */
 .container {
 	display: flex;
 	justify-content: space-between;
 }
 .point {
+	margin-left: 200px;
 	display: flex;
 	flex-direction: column;
-	margin-left: 150px;
+	list-style: none;
+	align-items: flex-start;
 }
-.pointItem {
-	font-size: 30px;
+
+.group {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	white-space: nowrap;
+	font-size: 40px;
 }
+
 .text {
 	font-size: 20px;
-	margin-right: 550px;
+	margin-right: 200px;
 }
 .textArea {
 	background-color: aliceblue;
+	word-wrap: break-word;
+	width: 400px;
+	height: auto;
 }
 
 .fiveStarRate {
