@@ -49,8 +49,28 @@ app.get("/ranking", (req, res) => {
 		connection.query("SELECT * FROM info", (err, rows) => {
 			connection.release();
 			console.log(rows);
+			len=rows.length;
+			let list=[]
+			let list2=[]
+			let num=0
+			for (let i = 0; i < len; i++) {
+				list.push(rows[i].soup+rows[i].men+rows[i].topping)
+			}
+			console.log(list)
+			while (num!== 3) {
+				let maxIndex = 0;
+				for (let i = 1; i < list.length; i++) {
+					if (list[i] > list[maxIndex]) {
+						maxIndex = i;
+					}
+				}
+				list2.push(maxIndex);
+				delete list[maxIndex]
+				num++
+			}
+			console.log(list2)
 			if (!err) {
-				res.render("ranking", { rows });
+				res.render("ranking", { rows,list2});
 			}
 		});
 	});

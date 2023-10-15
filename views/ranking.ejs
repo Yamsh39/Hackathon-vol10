@@ -9,6 +9,17 @@
 
     <body>
         <h1>man</h1>
-        <p><%= rows[0].id%></p>
+        <p>
+          <% for (let n = 0; n < rows.length; n++) {%>
+            <div class="item">
+              <a href="/menu/<%= rows[list2[n]].id %>">
+              <p class="menimage">
+                <img src="/upload/<%= rows[list2[n]].image %>" alt="" width="400" height="225">
+              </p>
+              <p class="shopName"><%= rows[list2[n]].shopName %></p>
+          </a>
+        </div>
+          <% } %>
+        </p>
     </body>
 </html>
