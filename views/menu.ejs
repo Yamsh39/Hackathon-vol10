@@ -8,21 +8,18 @@
 		<link rel="stylesheet" href="/styles/menu.css" type="text/css" />
 	</head>
 	<body>
-　<div class="header">
-		<h1><div class="title"><%= row.shopName %>の詳細情報</div></h1>
-		<div class="picture">
-			<div class="item">
-				<p class="menImage">
-					<img src="/upload/<%= row.image %>" fileId="<%=row.image %>" alt="" width="auto" height="400" />
-				</p>
+		<div class="header">
+			<h1><div class="title"><%= row.shopName %>の詳細情報</div></h1>
+			<div class="buttonDiv">
+				<button
+					id="deleteButton"
+					class="deleteButton"
+					dataId="<%= row.id %>"
+					fileId="<%= row.image %>"
+				>
+					削除
+				</button>
 			</div>
-		</div>
-    <div class="buttonDiv">
-			<button id="deleteButton" dataId="<%= row.id %>" fileId="<%= row.image %>">削除</button>
-    </div>
-   </div>
-		<div class="shop">
-			<h1>店名：<%= row.shopName %></h1>
 		</div>
 		<div class="main">
 			<div class="shop">
@@ -39,7 +36,17 @@
 				</div>
 			</div>
 			<div class="picture">
-				<img src="/upload/<%= row.image %>" alt="" width="auto" height="400" />
+				<div class="item">
+					<p class="menImage">
+						<img
+							src="/upload/<%= row.image %>"
+							fileId="<%=row.image %>"
+							alt=""
+							width="auto"
+							height="400"
+						/>
+					</p>
+				</div>
 			</div>
 		</div>
 		<div class="container">
@@ -65,39 +72,39 @@
 		</div>
 		<% }) %>
 		<script>
-			const deleteButton = document.getElementById('deleteButton');
-			deleteButton.addEventListener('click', function() {
-				const idToDelete = this.getAttribute('dataId');
-				const deleteFile = this.getAttribute('fileId');
-			// 追加: 確認ダイアログ表示
-			if (!confirm('本当に削除してもいいですか？')) {
-				return; // 「Cancel」を選択した場合、以降の処理はキャンセルされます
-			}
-			fetch(`/menu/delete-file/${deleteFile}`, {
-						method: 'DELETE',
-						body: JSON.stringify({ deleteFile }),
-						headers: {
-							'Content-Type': 'application/json',
-						},
-					})
-					.then(response => {
+			const deleteButton = document.getElementById("deleteButton");
+			deleteButton.addEventListener("click", function () {
+				const idToDelete = this.getAttribute("dataId");
+				const deleteFile = this.getAttribute("fileId");
+				// 追加: 確認ダイアログ表示
+				if (!confirm("本当に削除してもいいですか？")) {
+					return; // 「Cancel」を選択した場合、以降の処理はキャンセルされます
+				}
+				fetch(`/menu/delete-file/${deleteFile}`, {
+					method: "DELETE",
+					body: JSON.stringify({ deleteFile }),
+					headers: {
+						"Content-Type": "application/json",
+					},
+				})
+					.then((response) => {
 						if (response.status === 200) {
 							fetch(`/menu/${idToDelete}`, {
-							method: 'DELETE',
-							body: JSON.stringify({ deleteFile }), // deleteFile を送信
-							headers: {
-								'Content-Type': 'application/json',
-							},
-						})
-						// 削除が成功したときの処理
+								method: "DELETE",
+								body: JSON.stringify({ deleteFile }), // deleteFile を送信
+								headers: {
+									"Content-Type": "application/json",
+								},
+							});
+							// 削除が成功したときの処理
 						} else {
-						// 削除が失敗したときの処理
-						alert('データの削除に失敗しました。')
+							// 削除が失敗したときの処理
+							alert("データの削除に失敗しました。");
 						}
 					})
-			.catch(error => {
-				console.error('エラー: ' + error);
-			});
+					.catch((error) => {
+						console.error("エラー: " + error);
+					});
 			});
 		</script>
 	</body>
